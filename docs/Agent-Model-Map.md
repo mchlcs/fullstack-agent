@@ -4,61 +4,61 @@ version: 2.0.0
 updated: 2026-05-14
 ---
 
-# Mapa de Modelos — Fullstack Agent System
+# Model Map — Fullstack Agent System
 
-Roteamento por tipo de atividade para maximizar qualidade e minimizar custo de tokens.
-**Estimativa de economia: ~60–75% vs. usar Opus em tudo.**
+Routing by activity type to maximize quality and minimize token cost.
+**Estimated savings: ~60–75% vs. using Opus for everything.**
 
-## Tabela de roteamento
+## Routing table
 
-| Atividade | Modelo | Agente |
+| Activity | Model | Agent |
 |---|---|---|
-| Planejamento e decomposição de requisitos complexos | claude-opus-4-7 | Maestro |
-| Threat modeling, Zero Trust, análise de conformidade | claude-opus-4-7 | Sentinel |
-| Design de sistemas RAG, arquitetura de dados | claude-opus-4-7 | Neuron |
-| Revisão de segurança crítica (auth/dados/infra) | claude-opus-4-7 | Sentinel |
-| Implementação de APIs REST/GraphQL | claude-sonnet-4-6 | Stratum |
-| Modelagem de banco de dados e migrations | claude-sonnet-4-6 | Stratum |
-| Refatoração de código legado | claude-sonnet-4-6 | Stratum |
-| Implementação de auth/autorização | claude-sonnet-4-6 | Stratum |
-| Criação de componentes React/Vue complexos | claude-sonnet-4-6 | Facet |
-| Performance web (Core Web Vitals) | claude-sonnet-4-6 | Facet |
-| Auditoria de acessibilidade WCAG | claude-sonnet-4-6 | Facet |
-| Módulos IaC Terraform/Pulumi | claude-sonnet-4-6 | Bastion |
-| Design de pipelines CI/CD | claude-sonnet-4-6 | Bastion |
-| Observabilidade (Prometheus/Grafana) | claude-sonnet-4-6 | Bastion |
-| FinOps: análise e otimização de custos | claude-sonnet-4-6 | Bastion |
-| Implementação de pipelines ETL/ELT | claude-sonnet-4-6 | Neuron |
-| Feature engineering e análise exploratória | claude-sonnet-4-6 | Neuron |
-| Code review de segurança (SAST) | claude-sonnet-4-6 | Sentinel |
-| Políticas IAM e RBAC | claude-sonnet-4-6 | Sentinel |
-| Testes unitários e de integração | claude-haiku-4-5 | Stratum |
-| Documentação OpenAPI/JSDoc | claude-haiku-4-5 | Stratum |
-| Seeds e dados de teste | claude-haiku-4-5 | Stratum |
-| CSS utilities e variantes de estilo | claude-haiku-4-5 | Facet |
-| Testes E2E com Playwright | claude-haiku-4-5 | Facet |
+| Planning and decomposition of complex requirements | claude-opus-4-7 | Maestro |
+| Threat modeling, Zero Trust, compliance analysis | claude-opus-4-7 | Sentinel |
+| RAG system design, data architecture | claude-opus-4-7 | Neuron |
+| Critical security review (auth/data/infra) | claude-opus-4-7 | Sentinel |
+| REST/GraphQL API implementation | claude-sonnet-4-6 | Stratum |
+| Database modeling and migrations | claude-sonnet-4-6 | Stratum |
+| Legacy code refactoring | claude-sonnet-4-6 | Stratum |
+| Auth/authorization implementation | claude-sonnet-4-6 | Stratum |
+| Complex React/Vue component creation | claude-sonnet-4-6 | Facet |
+| Web performance (Core Web Vitals) | claude-sonnet-4-6 | Facet |
+| WCAG accessibility audit | claude-sonnet-4-6 | Facet |
+| Terraform/Pulumi IaC modules | claude-sonnet-4-6 | Bastion |
+| CI/CD pipeline design | claude-sonnet-4-6 | Bastion |
+| Observability (Prometheus/Grafana) | claude-sonnet-4-6 | Bastion |
+| FinOps: cost analysis and optimization | claude-sonnet-4-6 | Bastion |
+| ETL/ELT pipeline implementation | claude-sonnet-4-6 | Neuron |
+| Feature engineering and exploratory analysis | claude-sonnet-4-6 | Neuron |
+| Security code review (SAST) | claude-sonnet-4-6 | Sentinel |
+| IAM and RBAC policies | claude-sonnet-4-6 | Sentinel |
+| Unit and integration tests | claude-haiku-4-5 | Stratum |
+| OpenAPI/JSDoc documentation | claude-haiku-4-5 | Stratum |
+| Seeds and test data | claude-haiku-4-5 | Stratum |
+| CSS utilities and style variants | claude-haiku-4-5 | Facet |
+| E2E tests with Playwright | claude-haiku-4-5 | Facet |
 | Storybook stories | claude-haiku-4-5 | Facet |
-| Dockerfiles otimizados | claude-haiku-4-5 | Bastion |
-| Manifests Kubernetes (Deployment/Service/Ingress) | claude-haiku-4-5 | Bastion |
-| Runbooks e playbooks de incident | claude-haiku-4-5 | Bastion |
-| Relatórios de métricas e KPIs | claude-haiku-4-5 | Neuron |
-| Docstrings e documentação de pipelines | claude-haiku-4-5 | Neuron |
-| Security headers e configs WAF | claude-haiku-4-5 | Sentinel |
-| Checklists de security review | claude-haiku-4-5 | Sentinel |
+| Optimized Dockerfiles | claude-haiku-4-5 | Bastion |
+| Kubernetes manifests (Deployment/Service/Ingress) | claude-haiku-4-5 | Bastion |
+| Incident runbooks and playbooks | claude-haiku-4-5 | Bastion |
+| Metrics and KPI reports | claude-haiku-4-5 | Neuron |
+| Pipeline docstrings and documentation | claude-haiku-4-5 | Neuron |
+| Security headers and WAF configs | claude-haiku-4-5 | Sentinel |
+| Security review checklists | claude-haiku-4-5 | Sentinel |
 
-## Regra de decisão
+## Decision rule
 
 ```
-if    raciocínio sistêmico complexo, alto impacto, threat modeling  → opus-4-7
-elif  geração de código, análise técnica, design de arquitetura     → sonnet-4-6
-elif  padrão conhecido, output < 500 tokens, config repetitiva      → haiku-4-5
-else                                                                 → sonnet-4-6
+if    complex systemic reasoning, high impact, threat modeling  → opus-4-7
+elif  code generation, technical analysis, architecture design  → sonnet-4-6
+elif  known pattern, output < 500 tokens, repetitive config    → haiku-4-5
+else                                                            → sonnet-4-6
 ```
 
-## Modelos atuais (2026-05-14)
+## Current models (2026-05-14)
 
-| Tier | Model ID | Uso |
+| Tier | Model ID | Use |
 |---|---|---|
-| Opus | claude-opus-4-7 | Decisões arquiteturais, segurança crítica, IA/dados |
-| Sonnet | claude-sonnet-4-6 | Implementação geral, código, análise |
-| Haiku | claude-haiku-4-5-20251001 | Tarefas repetitivas, docs, configs simples |
+| Opus | claude-opus-4-7 | Architectural decisions, critical security, AI/data |
+| Sonnet | claude-sonnet-4-6 | General implementation, code, analysis |
+| Haiku | claude-haiku-4-5-20251001 | Repetitive tasks, docs, simple configs |

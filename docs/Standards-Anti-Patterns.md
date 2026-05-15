@@ -4,125 +4,125 @@ version: 2.0.0
 updated: 2026-05-14
 ---
 
-# Padrões e Anti-Padrões — Fullstack Agent System
+# Standards & Anti-Patterns — Fullstack Agent System
 
-## Padrões universais (todos os agentes)
+## Universal standards (all agents)
 
-### Output format obrigatório
+### Required output format
 
-Todo deliverable de especialista deve ter três seções:
+Every specialist deliverable must have three sections:
 
 ```markdown
 ## Deliverable
-[Código, config ou artefato completo]
+[Complete code, config, or artifact]
 
 ## Evidence
-[Testes passando, scan output, log de execução, métricas]
+[Passing tests, scan output, execution log, metrics]
 
 ## State Update
-[O que mudou: arquivos, dependências, estado de progress.md]
+[What changed: files, dependencies, progress.md state]
 ```
 
-Deliverable sem Evidence = entrega incompleta. Maestro rejeita e re-delega.
+Deliverable without Evidence = incomplete delivery. Maestro rejects and re-delegates.
 
 ### File-as-Bus
 
-Estado do projeto vive em arquivos, não em histórico de conversa:
-- `docs/progress.md` — estado atual, ciclo atual, bloqueios
-- `workspace/` — artefatos gerados (código, IaC, notebooks)
-- `docs/logs/` — evidência de execução por domínio
+Project state lives in files, not in conversation history:
+- `docs/progress.md` — current state, current cycle, blockers
+- `workspace/` — generated artifacts (code, IaC, notebooks)
+- `docs/logs/` — execution evidence by domain
 
-Agentes leem o que precisam, escrevem onde está definido no frontmatter.
+Agents read what they need, write where their frontmatter specifies.
 
 ### Secrets
 
-Nunca em código. Nunca em logs. Nunca em respostas de API.
-Sempre: variáveis de ambiente, AWS Secrets Manager, HashiCorp Vault, SOPS.
+Never in code. Never in logs. Never in API responses.
+Always: environment variables, AWS Secrets Manager, HashiCorp Vault, SOPS.
 
 ---
 
 ## Backend
 
-### Padrões
-- Validação de input em toda boundary externa (Zod, Pydantic, Joi)
-- HTTP semântico: 200, 201, 400, 401, 403, 404, 422, 500
-- Logs estruturados JSON com nível adequado
-- Queries parametrizadas — sem concatenação de strings SQL
-- Migrations com `up()` e `down()`
+### Required Standards
+- Input validation at every external boundary (Zod, Pydantic, Joi)
+- Semantic HTTP: 200, 201, 400, 401, 403, 404, 422, 500
+- Structured JSON logs with appropriate level
+- Parameterized queries — no SQL string concatenation
+- Migrations with `up()` and `down()`
 
-### Anti-padrões
-- `console.log` em produção
-- `any` em TypeScript sem justificativa
+### Anti-patterns
+- `console.log` in production
+- `any` in TypeScript without justification
 - Hardcoded IPs, secrets, connection strings
-- N+1 não endereçado
-- Query sem índice em campo filtrado
+- Unaddressed N+1
+- Query without index on filtered field
 
 ---
 
 ## Frontend
 
-### Padrões
-- TypeScript estrito — sem `any` implícito
+### Required Standards
+- Strict TypeScript — no implicit `any`
 - Semantic HTML — `<header>`, `<nav>`, `<main>`, `<article>`
 - Touch targets ≥ 44×44px
-- `alt` em toda `<img>`
-- `prefers-reduced-motion` respeitado
+- `alt` on every `<img>`
+- `prefers-reduced-motion` respected
 
-### Anti-padrões
-- `!important` sem comentário
-- `<div>` onde existe semântica adequada
-- Inline styles para lógica que pertence ao CSS
-- Eventos de click em `<span>` ou `<div>` sem `role`
+### Anti-patterns
+- `!important` without a comment
+- `<div>` where semantic element exists
+- Inline styles for logic that belongs in CSS
+- Click events on `<span>` or `<div>` without `role`
 - Body text < 16px
 
 ---
 
 ## Bastion
 
-### Padrões
-- Tags obrigatórias: `Project`, `Environment`, `Owner`, `CostCenter`
-- IAM least privilege — nenhuma permissão `*` sem justificativa
-- Remote state no Terraform (S3 + DynamoDB locking)
-- Multi-AZ para produção
-- Resource limits em todo container Kubernetes
+### Required Standards
+- Mandatory tags: `Project`, `Environment`, `Owner`, `CostCenter`
+- IAM least privilege — no `*` permission without justification
+- Remote state in Terraform (S3 + DynamoDB locking)
+- Multi-AZ for production
+- Resource limits on every Kubernetes container
 
-### Anti-padrões
-- Credenciais hardcoded em IaC
-- Infraestrutura sem alertas de observabilidade
-- `terraform apply` sem `plan` revisado
-- Recursos de produção sem backup configurado
-- Security group com `0.0.0.0/0` em inbound sem justificativa
+### Anti-patterns
+- Hardcoded credentials in IaC
+- Infrastructure without observability alerts
+- `terraform apply` without a reviewed `plan`
+- Production resources without configured backup
+- Security group with `0.0.0.0/0` inbound without justification
 
 ---
 
 ## Neuron
 
-### Padrões
-- Pipelines idempotentes — re-executáveis sem duplicar dados
-- Schema de entrada e saída documentado
-- Versionamento de modelos e datasets
-- Quality checks (Great Expectations / Soda) em entrada e saída
-- Linhagem de dados rastreável
+### Required Standards
+- Idempotent pipelines — re-executable without duplicating data
+- Input and output schema documented
+- Model and dataset versioning
+- Quality checks (Great Expectations / Soda) on input and output
+- Traceable data lineage
 
-### Anti-padrões
-- Dataset sobrescrito sem backup
-- Modelo em produção sem métricas de baseline
-- PII sem anonimização (LGPD)
-- Pipeline que falha silenciosamente
-- RAG sem validação de qualidade de retrieval
+### Anti-patterns
+- Dataset overwritten without backup
+- Model in production without baseline metrics
+- PII without anonymization (privacy compliance)
+- Pipeline that fails silently
+- RAG without retrieval quality validation
 
 ---
 
 ## Sentinel
 
-### Padrões
-- PASS/FAIL com evidência — nunca PASS com ressalva informal
-- CVSS v3.1 em toda vulnerabilidade reportada
-- ADR criado para toda decisão nova de arquitetura de segurança
-- Dependency scanning em CI/CD
+### Required Standards
+- PASS/FAIL with evidence — never PASS with informal caveat
+- CVSS v3.1 on every reported vulnerability
+- ADR created for every new security architecture decision
+- Dependency scanning in CI/CD
 
-### Anti-padrões
-- Aprovar com "pode resolver depois" em severidade Alta ou Crítica
-- Desabilitar controles de segurança como workaround
-- Review sem scan ou checklist executado
-- Secrets em qualquer arquivo versionado — sem exceção
+### Anti-patterns
+- Approving with "can fix later" on High or Critical severity
+- Disabling security controls as a workaround
+- Review without scan or checklist executed
+- Secrets in any versioned file — no exceptions

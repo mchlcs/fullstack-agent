@@ -1,43 +1,43 @@
 ---
 adr: "0000"
-title: "[Título da decisão]"
+title: "[Decision title]"
 status: "proposed | accepted | rejected | superseded"
 date: YYYY-MM-DD
-deciders: ["[agente ou humano]"]
+deciders: ["[agent or human]"]
 supersedes: ""
 superseded-by: ""
 ---
 
-# ADR 0000 — [Título]
+# ADR 0000 — [Title]
 
-## Contexto
+## Context
 
-[Qual problema ou situação motivou esta decisão? Qual é o estado atual do sistema?]
+[What problem or situation motivated this decision? What is the current state of the system?]
 
-## Decisão
+## Decision
 
-[O que foi decidido? Seja específico.]
+[What was decided? Be specific.]
 
-## Motivação
+## Rationale
 
-[Por que esta decisão foi tomada? Quais fatores foram determinantes?]
+[Why was this decision made? What factors were decisive?]
 
-## Alternativas consideradas
+## Alternatives considered
 
-| Alternativa | Por que descartada |
+| Alternative | Why discarded |
 |---|---|
-| [Opção A] | [Motivo] |
-| [Opção B] | [Motivo] |
+| [Option A] | [Reason] |
+| [Option B] | [Reason] |
 
-## Consequências
+## Consequences
 
-**Positivas:**
-- [Benefício 1]
+**Positive:**
+- [Benefit 1]
 
-**Negativas / trade-offs:**
+**Negative / trade-offs:**
 - [Trade-off 1]
 
-## Revisão obrigatória
+## Mandatory review
 
-- [ ] Security revisou (obrigatório para decisões de auth/dados/infra)
-- [ ] Aprovação humana explícita registrada
+- [ ] Security reviewed (mandatory for auth/data/infra decisions)
+- [ ] Explicit human approval recorded

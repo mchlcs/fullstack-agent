@@ -5,29 +5,29 @@ ciclo: 1
 
 # Progress — Fullstack Agent System
 
-## Estado atual
+## Current state
 
-**Fase:** Sistema criado e configurado  
-**Ciclo:** 1  
-**Bloqueios:** nenhum
+**Phase:** System created and configured  
+**Cycle:** 1  
+**Blockers:** none
 
-## Último ciclo
+## Last cycle
 
-- Sistema criado do zero: 6 agentes (Orchestrator + 5 especialistas)
-- Modelos atualizados: opus-4-7, sonnet-4-6, haiku-4-5-20251001
-- Formato Nexus adotado: YAML frontmatter + File-as-Bus
-- Constitution, Agent-Model-Map, Standards-Anti-Patterns criados
-- ADR template criado
-- README criado
+- System built from scratch: 6 agents (Orchestrator + 5 specialists)
+- Models updated: opus-4-7, sonnet-4-6, haiku-4-5-20251001
+- Nexus format adopted: YAML frontmatter + File-as-Bus
+- Constitution, Agent-Model-Map, Standards-Anti-Patterns created
+- ADR template created
+- README created
 
-## Próximos passos
+## Next steps
 
-- [ ] Configurar repositório GitHub público (`agente-fullstack`)
-- [ ] Ingerir na wiki do vault (03-RESOURCES/)
-- [ ] Publicar X thread
+- [ ] Set up public GitHub repository (`agente-fullstack`)
+- [ ] Ingest into vault wiki (03-RESOURCES/)
+- [ ] Publish X thread
 
-## Histórico de sessões
+## Session history
 
-| Data | Ciclo | Agente | Ação |
+| Date | Cycle | Agent | Action |
 |---|---|---|---|
-| 2026-05-14 | 1 | Orchestrator | Sistema criado — versão 2.0.0 |
+| 2026-05-14 | 1 | Orchestrator | System created — version 2.0.0 |

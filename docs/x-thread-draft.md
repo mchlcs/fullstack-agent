@@ -1,6 +1,6 @@
 ---
 title: "X Thread — Fullstack Agent System"
-status: draft
+status: ready
 created: 2026-05-14
 ---
 
@@ -9,109 +9,109 @@ created: 2026-05-14
 ---
 
 **[1/8]**
-Montei um time dev completo com 6 agentes de IA.
+I built a complete dev team with 6 AI agents.
 
-Não é um chatbot que responde perguntas.
-É um time de engenheiros seniores que pensa, escreve código real e roda testes.
+This isn't a chatbot that answers questions.
+It's a team of senior engineers that thinks, writes real code, and runs tests.
 
-Thread sobre como funciona 🧵
+Thread on how it works 🧵
 
 ---
 
 **[2/8]**
-O sistema tem 6 membros:
+The system has 6 members:
 
-🎯 Maestro — decompõe e delega (só planeja, nunca codifica)
-⚙️ Stratum — APIs, DB, microsserviços
-🎨 Facet — React/Vue, acessibilidade, performance
+🎯 Maestro — breaks down and delegates (plans only, never codes)
+⚙️ Stratum — APIs, DB, microservices
+🎨 Facet — React/Vue, accessibility, performance
 ☁️ Bastion — AWS, Terraform, CI/CD, K8s
-🧠 Neuron — ML, ETL, LLMs, sistemas RAG
-🔴 Sentinel — revisão de segurança com poder de veto
+🧠 Neuron — ML, ETL, LLMs, RAG systems
+🔴 Sentinel — security review with veto power
 
 ---
 
 **[3/8]**
-O maior erro dos sistemas multi-agente é o Maestro querer fazer tudo.
+The biggest mistake in multi-agent systems is letting the Orchestrator do everything.
 
-Aqui o Maestro é "thin" — só planeja e delega.
-Os especialistas são "thick" — código, testes, evidência.
+Here Maestro is "thin" — it only plans and delegates.
+The specialists are "thick" — code, tests, evidence.
 
-Nenhum agente entrega um deliverable sem:
-✅ Código
-✅ Testes rodando
-✅ Log de execução
+No agent ships a deliverable without:
+✅ Code
+✅ Running tests
+✅ Execution log
 
 ---
 
 **[4/8]**
-Roteamento de modelos por tipo de tarefa:
+Model routing by task type:
 
-🔴 Opus 4.7 → decisões arquiteturais, threat modeling, design de RAG
-🟡 Sonnet 4.6 → implementação de código, análise técnica
-🟢 Haiku 4.5 → testes unitários, YAML, docs, configs
+🔴 Opus 4.7 → architectural decisions, threat modeling, RAG design
+🟡 Sonnet 4.6 → code implementation, technical analysis
+🟢 Haiku 4.5 → unit tests, YAML, docs, configs
 
-Resultado: ~60–75% de economia vs. usar Opus em tudo.
+Result: ~60–75% savings vs. using Opus for everything.
 
 ---
 
 **[5/8]**
-Coordenação via File-as-Bus — não via histórico de conversa.
+Coordination via File-as-Bus — not via conversation history.
 
-Estado em `progress.md`.
-Artefatos em `workspace/`.
-Evidência em `docs/logs/`.
+State in `progress.md`.
+Artifacts in `workspace/`.
+Evidence in `docs/logs/`.
 
-Cada agente lê o que precisa, escreve onde está definido.
-Contexto mínimo, qualidade máxima.
+Each agent reads what it needs, writes where defined.
+Minimal context, maximum quality.
 
 ---
 
 **[6/8]**
-O sistema tem uma Constituição — 6 princípios que governam todos os agentes:
+The system has a Constitution — 6 principles that govern all agents:
 
-1. Evidência antes de código
-2. Segurança por padrão
-3. Testes não são opcionais
-4. Escopo fechado por padrão
-5. Falhe cedo, falhe visível
-6. O sistema melhora a cada ciclo
+1. Evidence before code
+2. Security by default
+3. Tests are not optional
+4. Closed scope by default
+5. Fail early, fail visibly
+6. The system improves every cycle
 
-O Security tem veto técnico sobre qualquer deploy.
+Sentinel has technical veto over any deploy.
 
 ---
 
 **[7/8]**
-Como usar com Claude Code:
+How to use with Claude Code:
 
 ```bash
-# Ativar o time completo (global)
-cp Maestro.md ~/.claude/CLAUDE.md
+# Activate the full team (global)
+cp Orchestrator.md ~/.claude/CLAUDE.md
 
-# Ou ativar especialista por projeto
-cp Stratum.md ./CLAUDE.md   # repo de API
-cp Bastion.md ./CLAUDE.md   # repo de infra
+# Or activate a specialist per project
+cp Backend-Dev.md ./CLAUDE.md   # API repo (Stratum)
+cp Infra-Cloud.md ./CLAUDE.md   # infra repo (Bastion)
 ```
 
-Regras condicionais por path: `.claude/rules/*.md`
+Conditional rules by path: `.claude/rules/*.md`
 
 ---
 
 **[8/8]**
-Sistema completo no GitHub:
+Full system on GitHub:
 → github.com/mchlcs/agente-fullstack
 
-Inclui:
-📁 6 prompts de agente (formato YAML frontmatter)
-📋 Constituição do sistema
-🗺️ Mapa de modelos por atividade
-📐 Template de ADR
+Includes:
+📁 6 agent prompts (YAML frontmatter format)
+📋 System Constitution
+🗺️ Model map by activity
+📐 ADR template
 📊 progress.md (File-as-Bus)
 
-Baseado nos padrões: Nexus, AiScientist, AHE.
+Based on: Nexus, AiScientist, AHE.
 
 ---
 
-*Notas para revisão:*
-- Substituir `github.com/mchlcs/agente-fullstack` com URL real após criar o repo
-- Tweet 8: adicionar screenshot do README ou diagrama se disponível
-- Considerar separar em 2 threads: técnica (devs) e resultado (builders)
+*Notes:*
+- URL confirmed: github.com/mchlcs/agente-fullstack ✅
+- Tweet 8: add README screenshot if available
+- Consider splitting into 2 threads: technical (devs) and outcome (builders)

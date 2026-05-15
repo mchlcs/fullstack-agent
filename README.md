@@ -6,66 +6,66 @@ criado: 2026-05-14
 
 # Fullstack Agent System
 
-Time de engenharia sênior composto por 6 agentes especializados, orquestrados por um Orchestrator central. Cada agente é um profissional de TI sênior — não um professor. Os agentes pensam, escrevem código compilável, fazem integrações e executam testes de validação.
+A senior engineering team composed of 6 specialized agents, orchestrated by a central Orchestrator. Each agent is a senior IT professional — not a tutor. Agents think, write compilable code, build integrations, and run validation tests.
 
-**Coordenação via File-as-Bus**: estado em arquivos, não em histórico de conversa.  
-**Evidência obrigatória**: nenhum deliverable sem testes ou logs de execução.  
-**Security com veto técnico**: pode bloquear qualquer deploy.
+**Coordination via File-as-Bus**: state lives in files, not in conversation history.  
+**Mandatory Evidence**: no deliverable without tests or execution logs.  
+**Security with technical veto**: can block any deploy.
 
 ---
 
-## Estrutura
+## Structure
 
 ```
 Fullstack Agent System/
 ├── 00-SYSTEM-PROMPTS/
-│   ├── Orchestrator.md     ← Maestro: planejador central (opus-4-7)
-│   ├── Backend-Dev.md      ← Stratum: APIs, DB, microsserviços (sonnet-4-6)
+│   ├── Orchestrator.md     ← Maestro: central planner (opus-4-7)
+│   ├── Backend-Dev.md      ← Stratum: APIs, DB, microservices (sonnet-4-6)
 │   ├── Frontend-Dev.md     ← Facet: UI/UX, React/Vue, a11y (sonnet-4-6)
 │   ├── Infra-Cloud.md      ← Bastion: AWS, Terraform, CI/CD (sonnet-4-6)
 │   ├── Data-AI.md          ← Neuron: ML, ETL, LLMs, RAG (opus-4-7)
 │   └── Security.md         ← Sentinel: AppSec, OWASP, compliance (opus-4-7)
 ├── docs/
-│   ├── Constitution.md     ← 6 princípios que governam todos os agentes
-│   ├── Agent-Model-Map.md  ← Roteamento: atividade → modelo → agente
+│   ├── Constitution.md     ← 6 principles that govern all agents
+│   ├── Agent-Model-Map.md  ← Routing: activity → model → agent
 │   ├── Standards-Anti-Patterns.md
-│   └── progress.md         ← Estado do sistema (File-as-Bus)
+│   └── progress.md         ← System state (File-as-Bus)
 └── adr/
-    └── 0000-template.md    ← Template para Architecture Decision Records
+    └── 0000-template.md    ← Template for Architecture Decision Records
 ```
 
 ---
 
-## Mapa de Modelos
+## Model Map
 
-| Agente | opus-4-7 | sonnet-4-6 | haiku-4-5 |
+| Agent | opus-4-7 | sonnet-4-6 | haiku-4-5 |
 |---|---|---|---|
-| Maestro | Planejamento complexo | — | — |
-| Stratum | — | APIs, DB, auth, refatoração | Testes, docs, seeds |
-| Facet | — | Componentes, performance, a11y | CSS, E2E, Storybook |
-| Bastion | — | IaC, CI/CD, observabilidade | Dockerfiles, YAML, runbooks |
-| Neuron | Arquitetura RAG, ML design | ETL, análise, features | Relatórios, docstrings |
+| Maestro | Complex planning | — | — |
+| Stratum | — | APIs, DB, auth, refactoring | Tests, docs, seeds |
+| Facet | — | Components, performance, a11y | CSS, E2E, Storybook |
+| Bastion | — | IaC, CI/CD, observability | Dockerfiles, YAML, runbooks |
+| Neuron | RAG architecture, ML design | ETL, analysis, features | Reports, docstrings |
 | Sentinel | Threat modeling, compliance | Code review, IAM | Headers, configs, checklists |
 
-**Estimativa de economia: ~60–75% vs. usar Opus em tudo.**
+**Estimated savings: ~60–75% vs. using Opus for everything.**
 
 ---
 
-## Como usar
+## Usage in Claude Code
 
-### Claude Code — Projeto específico
+### Specific project
 
 ```bash
-# Ativar Maestro como CLAUDE.md do projeto
+# Activate Maestro as project CLAUDE.md
 cp 00-SYSTEM-PROMPTS/Orchestrator.md ./CLAUDE.md
 
-# Agente especialista para repositório específico
-cp 00-SYSTEM-PROMPTS/Backend-Dev.md ./CLAUDE.md     # repo backend (Stratum)
-cp 00-SYSTEM-PROMPTS/Frontend-Dev.md ./CLAUDE.md    # repo frontend (Facet)
-cp 00-SYSTEM-PROMPTS/Infra-Cloud.md ./CLAUDE.md     # repo infra (Bastion)
+# Specialist agent for a specific repository
+cp 00-SYSTEM-PROMPTS/Backend-Dev.md ./CLAUDE.md     # backend repo (Stratum)
+cp 00-SYSTEM-PROMPTS/Frontend-Dev.md ./CLAUDE.md    # frontend repo (Facet)
+cp 00-SYSTEM-PROMPTS/Infra-Cloud.md ./CLAUDE.md     # infra repo (Bastion)
 ```
 
-### Regras condicionais por path
+### Conditional rules by path
 
 ```bash
 # Backend
@@ -88,52 +88,52 @@ cp 00-SYSTEM-PROMPTS/Infra-Cloud.md ./CLAUDE.md     # repo infra (Bastion)
 .claude/rules/auth.md          # paths: ["src/auth/**", "**/middleware/**"]
 ```
 
-### Hierarquia de carregamento no Claude Code
+### Loading hierarchy in Claude Code
 
 ```
-~/.claude/CLAUDE.md           ← Maestro (global, opcional)
-./CLAUDE.md                   ← Agente especialista (projeto)
-.claude/rules/*.md            ← Regras condicionais por path
+~/.claude/CLAUDE.md           ← Maestro (global, optional)
+./CLAUDE.md                   ← Specialist agent (project)
+.claude/rules/*.md            ← Conditional rules by path
 ```
 
 ---
 
-## Fluxo de trabalho
+## Workflow
 
 ```
-Maestro lê progress.md
-  └─→ Decompõe tarefa em sub-tarefas com critério de done
-      ├─→ Stratum (APIs, DB, microsserviços)
-      ├─→ Facet (UI, componentes, a11y)
+Maestro reads progress.md
+  └─→ Breaks task into sub-tasks with done criterion
+      ├─→ Stratum (APIs, DB, microservices)
+      ├─→ Facet (UI, components, a11y)
       ├─→ Bastion (IaC, CI/CD, deploy)
       ├─→ Neuron (pipelines, ML, RAG)
-      └─→ Sentinel (revisão obrigatória em auth/dados/infra)
+      └─→ Sentinel (mandatory review on auth/data/infra)
           ↓
-      Cada especialista entrega:
+      Each specialist delivers:
         Deliverable + Evidence + State Update
           ↓
-      Maestro valida Evidence, atualiza progress.md
+      Maestro validates Evidence, updates progress.md
 ```
 
 ---
 
-## Constituição (resumo)
+## Constitution (summary)
 
-1. **Evidência antes de código** — spec existe antes de implementar; Evidence é obrigatória
-2. **Segurança por padrão** — Security tem veto em qualquer deploy
-3. **Testes não são opcionais** — deliverable sem testes = entrega incompleta
-4. **Escopo fechado por padrão** — cada agente faz exatamente o que foi delegado
-5. **Falhe cedo, falhe visível** — erros vão para logs, nunca silenciosos
-6. **Sistema melhora a cada ciclo** — hill-climbing via Vault SO (hill, review, guard)
+1. **Evidence before code** — spec exists before implementing; Evidence is mandatory
+2. **Security by default** — Security has veto on any deploy
+3. **Tests are not optional** — deliverable without tests = incomplete delivery
+4. **Closed scope by default** — each agent does exactly what was delegated
+5. **Fail early, fail visibly** — errors go to logs, never silent
+6. **System improves every cycle** — hill-climbing via Vault SO (hill, review, guard)
 
 ---
 
-## Evolução do sistema
+## System evolution
 
-Baseado no Nexus Agent System e nas seguintes fontes:
+Based on the Nexus Agent System and the following sources:
 - AiScientist (thin control + thick state, File-as-Bus)
-- Agentic Harness Engineering (memória > prompts)
+- Agentic Harness Engineering (memory > prompts)
 - Multi-Agent Orchestration patterns (Prep Line, Gordon Ramsay)
-- RL Conductor (model routing por tipo de tarefa)
+- RL Conductor (model routing by task type)
 
-Versão anterior: Professor Fullstack (v1.0) — modelos 4.5, sem evidência obrigatória, framing educacional.
+Previous version: Professor Fullstack (v1.0) — 4.5 models, no mandatory evidence, educational framing.
