@@ -98,7 +98,7 @@ Conditional rules by path: `.claude/rules/*.md`
 
 **[8/8]**
 Full system on GitHub:
-→ github.com/mchlcs/agente-fullstack
+→ github.com/mchlcs/fullstack-agent
 
 Includes:
 📁 6 agent prompts (YAML frontmatter format)
@@ -112,6 +112,6 @@ Based on: Nexus, AiScientist, AHE.
 ---
 
 *Notes:*
-- URL confirmed: github.com/mchlcs/agente-fullstack ✅
+- URL confirmed: github.com/mchlcs/fullstack-agent ✅
 - Tweet 8: add README screenshot if available
 - Consider splitting into 2 threads: technical (devs) and outcome (builders)

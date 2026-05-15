@@ -1,5 +1,5 @@
 ---
-tags: [agente-fullstack, sistema-multi-agente, claude, time-dev, engenharia]
+tags: [fullstack-agent, sistema-multi-agente, claude, time-dev, engenharia]
 versao: "2.0.0"
 criado: 2026-05-14
 ---

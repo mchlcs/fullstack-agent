@@ -22,7 +22,7 @@ ciclo: 1
 
 ## Next steps
 
-- [ ] Set up public GitHub repository (`agente-fullstack`)
+- [ ] Set up public GitHub repository (`fullstack-agent`)
 - [ ] Ingest into vault wiki (03-RESOURCES/)
 - [ ] Publish X thread
 
